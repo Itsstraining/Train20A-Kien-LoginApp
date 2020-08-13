@@ -1,0 +1,54 @@
+<mat-toolbar style="display: flex;justify-content: space-between;" color="primary">
+
+    <span>Register App</span>
+    <span class="example-spacer"></span>
+    <button *ngIf="authService.user==null" (click)='this.authService.login()' mat-icon-button
+        class="example-icon favorite-icon" aria-label="Sign-In">
+        <mat-icon>how_to_reg</mat-icon>
+    </button>
+    <button *ngIf="authService.user!=null" (click)='this.authService.logout()' mat-icon-button class="example-icon"
+        aria-label="Sign-out">
+        <mat-icon>login</mat-icon>
+    </button>
+</mat-toolbar>
+<br>
+<p>
+    <mat-card *ngIf="authService.user==null" style="width: 60%; " class="my-card">
+        <mat-card-content>
+            <form class="my-form">
+                <mat-form-field class="full-width">
+                    <mat-label>Họ</mat-label>
+                    <input matInput placeholder="First name" name="name">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="full-width">
+                    <mat-label>Tên</mat-label>
+                    <input matInput placeholder="Last name" name="name">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="full-width">
+
+                    <input matInput type="email" placeholder="Vui lòng nhập Email" name="Email">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" name="Password" type="password">
+                </mat-form-field>
+                <br>
+                <mat-label>Vui lòng chọn độ tuổi của bạn:</mat-label>
+                <br>
+                <mat-slider style="width: 190px;" color="primary" thumbLabel [displayWith]="formatLabel"
+                    tickInterval="1000" min="1" max="100">
+                </mat-slider>
+
+                <mat-card-actions style="display: flex;justify-content: center;">
+                    <button mat-raised-button *ngIf="authService.user==null" (click)='this.authService.login()'
+                        aria-label="Sign-out" color="primary">Tạo tài khoản</button>
+                </mat-card-actions>
+
+            </form>
+        </mat-card-content>
+
+    </mat-card>
+</p>
